@@ -148,3 +148,31 @@ medB = See("medB")
 
 see_assumption(medA)
 see_assumption(medB)
+
+
+library(AdhereR)
+
+# Load the dataset correctly
+data("medevents")  
+
+# Check if the dataset is loaded
+if (exists("medevents")) {
+    write.csv(medevents, "med_events.csv", row.names=FALSE)
+    print("CSV file saved successfully!")
+} else {
+    print("Dataset 'medevents' not found!")
+}
+
+
+library(AdhereR)
+
+# Load med.events properly using get()
+medevents <- get("med.events", envir = asNamespace("AdhereR"))
+
+# Check if the dataset is loaded
+head(medevents)
+
+# Save as CSV
+write.csv(medevents, "med_events.csv", row.names=FALSE)
+print("CSV file saved successfully!")
+
